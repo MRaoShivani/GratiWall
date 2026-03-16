@@ -1,0 +1,69 @@
+Step 1-  create a gratitude table with columsn
+Step 2 - Set up Flak project structure
+
+backend/
+│
+├── app.py              # App entry point
+├── config.py           # DB + app config
+├── models.py            # DB models
+│      
+│
+├── routes/
+│   ├── submit.py       # POST API
+│   |── rewrite.py      # AI rewrite API
+│   └── gratitude.py     # GET API
+|
+├── services/
+│   ├── email_service.py
+|   ├── card_generator.py    # handles image generation
+│   └── ai_service.py
+│
+├── templates/
+│   └── email_cards/
+│
+|── static/
+|   ├── base_cards
+|   |   ├── card_1.png
+|   |   └── card_2.png
+|   |
+│   └── generated_cards
+|       ├── generated_card_1.png
+|       └── generated_card_2.png
+|   
+└── requirements.txt
+
+Step 3 - Create Flask app,config, models.py scripts 
+Step 4 - Create Submit POST API
+            4a. Create email service 
+            4b. Html rendering on canva card(png)
+            4c. Plug email service into submit API
+
+Step 4b - Canva card(png)  ----> Python backend  --->  Overlay text(msg,sender)   ---> Generate new image   ---> Send the that image on the email
+
+
+Step 5 - run - http://127.0.0.1:5000/api/submit
+with inputs 
+  {
+  "sender_name": "Shivani Rao",
+  "receiver_name": "Atul Griyaghey",
+  "receiver_email": "atul.griyaghey@ahinfotech.in",
+  "message": "Hello, the rewrite api, submit api and send api are ready, this is from send api. Its time for UI to shine now",
+  "card_id": 1
+}     
+for submitting the api 
+
+Step 6 - http://127.0.0.1:5000/api/gratitude-wall
+for displaying all the gratitude message in the DB
+
+stEP 7 - http://127.0.0.1:5000/api/send  - will send the email
+input
+{
+  "gratitude_id": 8
+}
+
+
+Step 8 - http://127.0.0.1:5000/api/rewrite  for rewriting the prompt
+input
+{
+  "message": "give me a fun witty messge to send to my collegue asking him not to work so hard,i feel concisous. it has to be max 2 lines crispm it has to be funny human like" 
+}
